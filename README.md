@@ -34,7 +34,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/thesumansaurav/weather-app.git
-cd weather-app
+cd weather-app/backend
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
