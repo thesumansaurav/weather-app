@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function generateInterleavings() {
+            var s1 = document.getElementById('input1').value;
+            var s2 = document.getElementById('input2').value;
+
+            var resultContainer = document.getElementById('output');
+            resultContainer.innerHTML = '';
+
+            function generate_interleavings(interleaving, remaining_s1, remaining_s2) {
+                if (!remaining_s1 && !remaining_s2) {
+                    resultContainer.innerHTML += '<p>' + interleaving + '</p>';
+                    return;
+                }
+
+                if (remaining_s1) {
+                    generate_interleavings(interleaving + remaining_s1[0], remaining_s1.slice(1), remaining_s2);
+                }
+
+                if (remaining_s2) {
+                    generate_interleavings(interleaving + remaining_s2[0], remaining_s1, remaining_s2.slice(1));
+                }
+            }
+
+            generate_interleavings('', s1, s2);
+        }
+    </script>
+    <title>Interleavings Generator</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Interleavings Generator</h2>
+        <form action="{% url 'get-interleaving' %}" method="post">
+            {% csrf_token %}
+            <label for="input1">String 1:</label>
+            <input type="text" name="s1" id="input1" placeholder="Enter string 1">
+            
+            <label for="input2">String 2:</label>
+            <input type="text" name="s2" id="input2" placeholder="Enter string 2">
+            
+            <button>Submit</button>
+        </form>
+
+        <div id="output"></div>
+    </div>
+</body>
+
+</html>

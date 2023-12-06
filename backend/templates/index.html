@@ -1,0 +1,126 @@
+{% load humanize %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Weather Forecast</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+   <nav>
+    <header>Weather Forecast</header>
+
+
+   </nav>
+
+
+  
+        <!-- {% if messages %}
+        <div class="message_container">
+        {% for message in messages %}
+        
+        <div class="alert info"><span class='alert-close'
+                onclick="this.parentElement.style.display='none';">&times;</span>
+            <p>{{ message }}</p>
+            </ul>
+        </div>
+        
+        
+        {% endfor %}
+        </div>
+        {% endif %} -->
+    
+
+  <div class="main-container">
+    <div class="city_form">
+        <form action="{% url 'get-city' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="city" id="" placeholder="Enter city">
+            <button>Add</button>
+        </form>
+    </div>
+    
+    {% if cities %}
+    <div id="cityContainer" class="city-container">
+        {% for city in cities %}
+        <a class="city" href="{% url 'weather_data' city_name=city.name %}">{{ city.name }}</a>
+    
+        <!-- <p>{{ city.weather_data }}</p> -->
+    
+        {% endfor %}
+    </div>
+    
+    <div id="weatherTiles" class="weather-tiles">
+    
+        {% for forecast_day in forecast %}
+        <div class="weather-tile" id="weatherTile{{ forloop.counter }}">
+            <div id="dayName{{ forloop.counter }}" class="day_name"> </div>
+    
+            <div><span id="date{{ forloop.counter }}">{{ forecast_day.date }}</span></div>
+            <div class="temp"> {{ forecast_day.day.avgtemp_c }} &#8451</div>
+            <div><span id="date{{ forloop.counter }}">{{ forecast_day.day.condition.text }}</span></div>
+        </div>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                const dateElement = document.getElementById("date{{ forloop.counter }}");
+                const d = new Date(dateElement.textContent); // Get the content of the span
+                let day = weekday[d.getDay()];
+                document.getElementById("dayName{{ forloop.counter }}").innerHTML = day;
+            });
+        </script>
+        {% endfor %}
+    </div>
+    
+    {% endif %}
+    
+    {% if forecast_city %}
+    <div id="weatherTiles" class="weather-tiles">
+    
+        {% for forecast_day in forecast_city %}
+        <div class="weather-tile" id="weatherTile{{ forloop.counter }}">
+            <div id="dayName{{ forloop.counter }}" class="day_name"> </div>
+    
+            <div><span id="date{{ forloop.counter }}">{{ forecast_day.date }}</span></div>
+            <div class="temp"> {{ forecast_day.day.avgtemp_c }} &#8451</div>
+            <div><span id="date{{ forloop.counter }}">{{ forecast_day.day.condition.text }}</span></div>
+        </div>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                const dateElement = document.getElementById("date{{ forloop.counter }}");
+                const d = new Date(dateElement.textContent); // Get the content of the span
+                let day = weekday[d.getDay()];
+                document.getElementById("dayName{{ forloop.counter }}").innerHTML = day;
+            });
+        </script>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script language="JavaScript" type="text/javascript" src="/static/js/index.js"></script>
+
+<footer>
+    <div class="task2">
+        <p><a href="{% url 'task-two' %}" style="color: #fff; text-decoration: none;">Task 2</a></p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Tiles</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            /* Arrange children in a column */
+            align-items: center;
+            justify-content: flex-start;
+            /* Align items to the start (top) of the container */
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .centeredDiv {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 20px;
+            /* Add margin to create space between the divs */
+            border-radius: 10px;
+            /* Add rounded corners */
+        }
+
+        .searchForm {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .cityButton {
+            background-color: #555;
+            color: #fff;
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            /* Add rounded corners to the buttons */
+            cursor: pointer;
+        }
+
+        .tilesContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            /* Create columns with a minimum width of 200px */
+            grid-gap: 20px;
+            /* Add gap between the tiles */
+        }
+
+        .tile {
+            background-color: #555;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            /* Add rounded corners to the tiles */
+        }
+    </style>
+</head>
+
+<body>
+
+
+        <div id="cityContainer" class="city-container">
+            {% for city in cities %}
+            <a class="city" href="weather-data/{{ city.name }}/">{{ city.name }}</a>
+            <!-- <p>{{ city.weather_data }}</p> -->
+          <p>{{ city.weather_data.forecast.forecastday}}</p>
+            {% endfor %}
+        </div>
+    <div class="searchForm">
+        <input type="text" placeholder="Enter city name">
+        <button class="cityButton">Add City</button>
+    </div>
+
+    <div class="tilesContainer">
+        <div class="tile">Tile 1</div>
+        <div class="tile">Tile 2</div>
+        <div class="tile">Tile 3</div>
+        <!-- Add more tiles as needed -->
+    </div>
+
+</body>
+
+</html>

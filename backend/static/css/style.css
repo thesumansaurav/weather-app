@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+a{
+    text-decoration: none;
+}
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+}
+.message{
+    background-color: #ffc1c1;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        width: 100%;
+        box-sizing: border-box;
+        position: fixed;
+        top: 50px;
+        border: 2px solid #f10f0fe3;
+}
+.message_container{
+margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+    text-align: center;
+}
+/* form {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+} */
+.city_form {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        position: fixed;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.city-container {
+        /* background-color: rgb(51, 51, 51); */
+        display: flex;
+        padding: 20px;
+        text-align: center;
+        position: fixed;
+        top: 150px;
+        left: 50%;
+        transform: translateX(-50%);
+        
+    flex-wrap: wrap;
+}
+
+.city {
+    margin: 10px;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid rgb(11, 74, 199);
+}
+
+.weather-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    top: 50px;
+        margin-top: 10%;
+        padding: 30px;
+}
+
+.weather-tile {
+    flex: 1;
+    /* padding: 20px; */
+    background-color: #d7f6f4e3;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px;
+    border-radius: 25px;
+        border: 2px solid #00857ce3;
+        padding: 20px;
+        width: 150px;
+        height: 200px;
+        display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+}
+.day_name{
+    font-size: 23px;
+        font-weight: bold;
+}
+.temp{
+        font-size: 49px;
+            font-weight: 900;
+}
+
+.task2 {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+}

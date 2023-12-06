@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interleavings Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        .back-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Interleavings Results</h2>
+        <div id="output">
+            {% if results %}
+            <p>Interleavings:</p>
+            {% for result in results %}
+            <p><span>{{forloop.counter}}. </span>{{ result }}</p>
+            {% endfor %}
+            {% else %}
+            <p>No interleavings found.</p>
+            {% endif %}
+        </div>
+        <a href="javascript:history.back()" class="back-button">Back</a>
+    </div>
+</body>
+
+</html>
